@@ -10,13 +10,13 @@ end
 Lines = get_lines
 screen = ""
 loop do
-  reset
   screen = ""
   (Lines + 1).times do |i|
     screen += "#{i}\n"
   end
   screen.chomp!
+  reset
   print screen
-  sleep 1
+  # sleep 1
 end
 
