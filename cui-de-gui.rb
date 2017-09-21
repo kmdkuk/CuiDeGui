@@ -2,9 +2,9 @@ def reset
   puts "\e[H\e[2J"
 end
 
-def get_column
+def get_lines
   size_text = `resize`
-  column = size_text.slice(/(?<=COLUMNS=)([0-9]+)/).to_i
+  column = size_text.slice(/(?<=LINES=)([0-9]+)/).to_i
 end
 
 p "abc test"
@@ -15,5 +15,5 @@ size_text = `resize`
 
 p size_text
 
-p get_column
+p get_lines
 
