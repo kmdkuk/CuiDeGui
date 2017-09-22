@@ -7,10 +7,10 @@ def get_lines
   column = size_text.slice(/(?<=LINES=)([0-9]+)/).to_i
 end
 
-Lines = get_lines
 screen = ""
 loop do
   screen = ""
+  Lines = get_lines
   (Lines + 1).times do |i|
     screen += "#{i}\n"
   end
