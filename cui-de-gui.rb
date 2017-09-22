@@ -7,16 +7,22 @@ def get_lines
   column = size_text.slice(/(?<=LINES=)([0-9]+)/).to_i
 end
 
-screen = ""
-loop do
-  screen = ""
-  Lines = get_lines
-  (Lines + 1).times do |i|
-    screen += "#{i}\n"
+def draw
+  loop do
+    screen = ""
+    lines = get_lines
+    (lines+1).times do |i|
+      line_text = yield i
+      screen += line_text
+      screen += "\n"
+    end
+    reset
+    screen.chomp!
+    print screen
   end
-  screen.chomp!
-  reset
-  print screen
-  # sleep 1
+end
+
+draw do |line|
+  line.to_s
 end
 
